@@ -1,0 +1,6 @@
+*.iml
+target/
+.idea/*
+
+### OSX ###
+.DS_Store

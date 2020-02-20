@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd ">
+
+        <!--配置springmvc，网站跳转逻辑的配置-->
+        <!--组件扫描配置-->
+        <context:component-scan base-package="com.pl.ay.*"/>
+
+
+        <!--配置处理器映射器和处理器适配器-->
+        <!--将springmvc不能处理的请求交给tomcat，因为web.xml中前端控制器配置的是/，所以*.jsp这种带后缀的地址是处理不了的，要交给tomcat去处理-->
+        <mvc:default-servlet-handler/>
+        <!--配置基于注解的映射器和适配器，能支持springmvc更高级的一些功能，JSR303校验，快捷ajax...，最重要的是映射动态请求-->
+        <mvc:annotation-driven/>
+
+        <!--配置视图解析器-->
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <!--前缀-->
+            <property name="prefix" value="/WEB-INF/views/"/>
+            <!--后缀-->
+            <property name="suffix" value=".jsp"/>
+        </bean>
+
+        <!--静态资源映射位置-->
+        <mvc:resources mapping="/ssj/**" location="static/">
+            <mvc:cache-control max-age="0" no-cache="true"/>
+        </mvc:resources>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设定默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+        <property name="maxUploadSize" value="5242880"></property>
+    </bean>
+</beans>
