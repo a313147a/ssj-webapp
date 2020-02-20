@@ -41,6 +41,14 @@ public class MyFirstController {
         return JsonResponse.success("success!").addInfo(map);
     }
 
+    @RequestMapping(value = "/mytest1")
+    @ResponseBody
+    public JsonResponse mytest1() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("qtNewIPOStock", "helloworld");
+        return JsonResponse.success("success!").addInfo(map);
+    }
+
     @RequestMapping(value = "/index")
     public ModelAndView index(){
         ModelAndView mv = new ModelAndView("a");
