@@ -107,7 +107,7 @@
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
-      <version>1.2.29</version>
+      <version>1.2.83</version>
     </dependency>
     <!--返回json字符串支持，即controller层用@Response注解-->
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
